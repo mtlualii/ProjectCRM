@@ -8,7 +8,7 @@ Feature: Poll
     When the user enters valid credentials
     Then the user sees title "Portal"
 
-#  Acceptance Criteria: deneme
+#  Acceptance Criteria:
 #
 #  +User should be able to add users by selecting multiple contacts from Employees and Departments contact lists.
 #  +User should be able to attach a link by clicking on the link icon.
@@ -20,36 +20,36 @@ Feature: Poll
 
   Scenario: Adding multiple contacts to message function
     And user clicks on "Poll" tab under Activity Stream
-    Given user should be able to click on "Add more" button on To line
-    When user clicks on "Add more" button on To line
+    Given user should be able to see Add more button on To line
+    When user clicks on Add more button on To line
     Then Add more pop up is displayed
-    When user clicks on "Employees and Departments" box on the table
+    When user clicks on Employees and Departments link on the table
     Then contacts should be listed
-    And user should be able to select contacts from the list
-    And selected contacts should be listed on To line
+    And user should be able to select multiple contact from the list
+    And selected contact should be listed on To line
 
-  @wip
+
   Scenario: Attach Link function
     And user clicks on "Poll" tab under Activity Stream
     When user clicks on "Link" icon
     Then Link pop up is displayed
-    When user enters "message" to "Link text" box
-    Then the message should be displayed on the "Link text" box
-    When user enters "link" to "Link URL" box
-    Then the link should be displayed on "Link URL" box
-    When user clicks on Save button
-    Then Link text should be displayed on message box
+    When user enters "testLink" to "Link text" box
+    When user enters "www.duckduckgo.com" to "Link URL" box
+    And user clicks on Save button
+    Then Link text which is "testLink" should be displayed on message box
+
 
   Scenario: Add mention function
     And user clicks on "Poll" tab under Activity Stream
-    Given user should be able to click on "Add mention" icon
+    Given user should be able to see "Add mention" icon
     When user clicks on "Add mention" icon
     Then Add more pop up is displayed
-    When user clicks on "Employees and Departments" box on the table
+    When user clicks on Employees and Departments link on the table
     Then contacts should be listed
     And user should be able to select a contact from the list
-    And selected contacts should be listed on Message area box
+    And selected contact should be listed on Message area box
 
+  @wip
   Scenario: Add multiple questions and answers function
     And user clicks on "Poll" tab under Activity Stream
     When user enters clicks on Add question link
