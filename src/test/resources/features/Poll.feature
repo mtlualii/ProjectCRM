@@ -8,7 +8,7 @@ Feature: Poll
     When the user enters valid credentials
     Then the user sees title "Portal"
 
-#  Acceptance Criteria:
+#  Acceptance Criteria: deneme
 #
 #  +User should be able to add users by selecting multiple contacts from Employees and Departments contact lists.
 #  +User should be able to attach a link by clicking on the link icon.
