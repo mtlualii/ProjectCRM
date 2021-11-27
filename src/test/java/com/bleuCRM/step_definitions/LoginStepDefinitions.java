@@ -33,11 +33,6 @@ public class LoginStepDefinitions {
         loginPage.passwordBox.sendKeys(ConfigurationReader.get("password"));
         loginPage.logInButton.click();
 
-
-
-
-
-
     }
 
     @Then("the user sees title {string}")
