@@ -193,6 +193,7 @@ public class BrowserUtils {
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + element);
+            //a
 
         }
     }
