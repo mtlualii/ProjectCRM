@@ -9,4 +9,4 @@ Feature : Click On the "High Priority" Checkbox in the Task Tab
 
     Scenario: the user clicks on the High Priority check box
       When the user clicks on the High Priority check box
-      Then the High Priority check box should be selected
+      Then High Priority check box should be selected
