@@ -8,5 +8,5 @@ Feature : Click On the "High Priority" Checkbox in the Task Tab
     And the user navigate to "Task" by Quick Menu
 
     Scenario: the user clicks on the High Priority check box
-      When the user clicks on the High Priority check box
+      When the user clicks on High Priority check box
       Then High Priority check box should be selected
