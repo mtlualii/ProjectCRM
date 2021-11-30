@@ -1,10 +1,12 @@
 package com.bleuCRM.pages;
 
+import com.bleuCRM.utilities.BrowserUtils;
 import com.bleuCRM.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -66,7 +68,7 @@ public class EventPage extends BasePage {
     @FindBy(xpath = "(//td[@class='feed-calendar-view-text-cell-r'])[3]")
     public WebElement location;
 
-    @FindBy(css = ".feed-event-rem-lbl-for")
+    @FindBy(id = "event-remindercal_3Jcl")
     public WebElement setReminderCheckmark;
 
     @FindBy(id = "event-remind_countcal_3Jcl")
@@ -80,9 +82,12 @@ public class EventPage extends BasePage {
 
     public WebElement pickLocation(String locationName) {
 
-        String path = "//div[text()='"+ locationName + "']";
 
-        return Driver.get().findElement(By.xpath(path));
+        eventLocationDropdown.click();
+        BrowserUtils.waitFor(2);
+
+        return Driver.get().findElement(By.xpath("//div[text()='"+locationName+"']"));
+
     }
 
     @FindBy(id = "feed-event-dest-add-link")
@@ -91,17 +96,27 @@ public class EventPage extends BasePage {
     @FindBy(id = "destDepartmentTab_calnAJEM3")
     public WebElement employeesAndDepartments;
 
-    @FindBy(xpath = "(//div[@class='bx-finder-company-department-text'])[2]")
-    public WebElement departmentName;
 
-    @FindBy(css = ".bx-finder-company-department-check-text")
-    public WebElement selectDepartment;
+    public void pickDepartment(String depName) {
+
+        String path = "//div[text()='"+depName+"']";
+
+        Driver.get().findElement(By.xpath(path)).click();
+        Driver.get().findElement(By.xpath("//div[@class='bx-finder-company-department-check-arrow']")).click();
+
+    }
+
+    public void pickIndividual(String name) {
+
+        String path = "//div[text()='"+name+"']";
+        Driver.get().findElement(By.xpath(path)).click();
+    }
 
     @FindBy(css = ".bx-finder-company-department-employee-name")
     public WebElement selectIndividual;
 
-    @FindBy(css = ".feed-event-destination-text")
-    public List<WebElement> membersBox;
+    @FindBy(xpath = "(//div[@class='feed-post-title-block'])[1]//a[@class='feed-add-post-destination-new']")
+    public List<WebElement> informationBox;
 
     @FindBy(id = "feed-cal-additional-show")
     public WebElement moreButton;
@@ -117,6 +132,9 @@ public class EventPage extends BasePage {
 
     @FindBy(xpath = "//label[text()='Importance']")
     public WebElement importance;
+
+    @FindBy(xpath = "//td[@class='feed-cal-addit-left-c']")
+    public List<WebElement> parameters;
 
     @FindBy(id = "blog-submit-button-save")
     public WebElement sendButton;

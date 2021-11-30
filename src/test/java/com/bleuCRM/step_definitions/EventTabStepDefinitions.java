@@ -6,13 +6,16 @@ import com.sun.xml.internal.ws.policy.AssertionSet;
 import io.cucumber.java.ca.Cal;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.eo.Se;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 public class EventTabStepDefinitions {
@@ -72,11 +75,17 @@ public class EventTabStepDefinitions {
         eventPage.timeZoneButton.click();
     }
 
-    @Then("Two dropdown menu appears")
-    public void two_dropdown_menu_appears() {
+    @Then("Two dropdown menu appears and select start zone {string}")
+    public void two_dropdown_menu_appears(String timeZone) {
 
+        BrowserUtils.waitForVisibility(eventPage.timeZoneStartPick,2);
         Assert.assertTrue(eventPage.timeZoneStartPick.isDisplayed());
         Assert.assertTrue(eventPage.timeZoneEndPick.isDisplayed());
+
+        Select select = new Select(eventPage.timeZoneStartPick);
+
+        select.selectByValue(timeZone);
+
 
     }
 
@@ -87,14 +96,24 @@ public class EventTabStepDefinitions {
 
     }
 
-    @Then("Should be able to see entered {string} as event name, {string}, {string}, {string} as event date and time")
-    public void should_be_able_to_see_entered_as_event_name_hour_minutes_as_event_date_and_time(String input, String date, String hour, String minutes) {
+    @Then("Should be able to see entered {string} as event name, {string}, {string}, {string} as event date and time depends on time zone {string}")
+    public void should_be_able_to_see_entered_as_event_name_hour_minutes_as_event_date_and_time(String input, String date, String hour, String minutes, String timeZone) {
 
-        System.out.println("TimeZone.getDefault() = " + TimeZone.getDefault());
+        int a = Integer.parseInt(ZoneId.of(timeZone).getRules().getOffset(Instant.now()).toString().substring(1,3));
+        int b = Integer.parseInt(ZoneId.of(TimeZone.getDefault().getID()).getRules().getOffset(Instant.now()).toString().substring(1,3));
 
+        int c = a+b;
+        System.out.println(a+b);
 
-        String expectedEventTime = date + ", " + hour + ":" + minutes + " am";
-        BrowserUtils.waitForVisibility(eventPage.eventName,2);
+        int hourInt = Integer.parseInt(hour)+c;
+
+        String expectedEventTime = date + ", " + hourInt + ":" + minutes + " pm";
+        if(hourInt>11) {
+            hourInt = hourInt-12;
+            expectedEventTime = date + ", " + hourInt + ":" + minutes + " am";
+        }
+
+        BrowserUtils.waitForVisibility(eventPage.eventName,3);
         Assert.assertEquals(input, eventPage.eventName.getText() );
         Assert.assertEquals(expectedEventTime, eventPage.eventTime.getText());
 
@@ -103,6 +122,8 @@ public class EventTabStepDefinitions {
     @When("Clicks set reminder checkmark")
     public void clicks_set_reminder_checkmark() {
 
+        eventPage.setReminderCheckmark.click();
+        BrowserUtils.waitFor(3);
         eventPage.setReminderCheckmark.click();
 
     }
@@ -120,7 +141,6 @@ public class EventTabStepDefinitions {
 
         // Select select = new Select(eventPage.eventLocationDropdown);
 
-        eventPage.eventLocationDropdown.click();
         eventPage.pickLocation(roomName);
 
     }
@@ -128,62 +148,65 @@ public class EventTabStepDefinitions {
     @Then("Should be able to see selected meeting room {string} as location")
     public void should_be_able_to_see_selected_meeting_room_as_Location(String roomName) {
 
-        Assert.assertEquals(eventPage.location.getText(), roomName);
-
+        BrowserUtils.waitForVisibility(eventPage.location,3);
+        Assert.assertEquals(roomName, eventPage.location.getText() );
     }
 
     @When("Clicks Member Box")
     public void clicks_Member_Box() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        eventPage.addingAttendees.click();
+        BrowserUtils.waitFor(3);
+
     }
 
     @When("Clicks Employees and Departments")
     public void clicks_Employees_and_Departments() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        eventPage.employeesAndDepartments.click();
+        BrowserUtils.waitFor(3);
     }
 
-    @When("Clicks the arrow left side of {string} which would like to be added")
-    public void clicks_the_arrow_left_side_of_which_would_like_to_be_added(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+    @When("Clicks the arrow left side of department name {string} which would like to be added")
+    public void clicks_the_arrow_left_side_of_which_would_like_to_be_added(String depName) {
 
-    @When("Selects checkmark")
-    public void selects_checkmark() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        eventPage.pickDepartment(depName);
+        BrowserUtils.waitFor(3);
+
     }
 
     @When("Selects {string}")
-    public void selects(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void selects(String name) {
+
+        eventPage.pickIndividual(name);
+        BrowserUtils.waitFor(3);
+
     }
 
-    @Then("Should be able to see {string} and {string}")
-    public void should_be_able_to_see_and(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("Should be able to see followings")
+    public void should_be_able_to_see_and(List<String> attendees) {
+
+        System.out.println(BrowserUtils.getElementsText(eventPage.informationBox));
+        Assert.assertEquals(attendees, BrowserUtils.getElementsText(eventPage.informationBox));
+
+
     }
 
     @When("Clicks more button")
     public void clicks_more_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        eventPage.moreButton.click();
+
     }
 
     @Then("Should be able to see followings as parameters")
-    public void should_be_able_to_see_followings_as_parameters(io.cucumber.datatable.DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        // For automatic transformation, change DataTable to one of
-        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-        // Double, Byte, Short, Long, BigInteger or BigDecimal.
-        //
-        // For other transformations you can register a DataTableType.
-        throw new io.cucumber.java.PendingException();
+    public void should_be_able_to_see_followings_as_parameters(List<String> parameters) {
+
+        Assert.assertEquals( parameters, BrowserUtils.getElementsText(eventPage.parameters));
+
+
+
+
     }
 
     @Then("Should be able to see an event with the name of {string}")
