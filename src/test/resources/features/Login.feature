@@ -1,5 +1,5 @@
 Feature: Login Function
-
+  @wip
   Scenario: Login with valid credentials
     Given the user is on login page
     When the user enters valid credentials
