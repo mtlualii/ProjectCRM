@@ -38,7 +38,7 @@ Feature: User should be able to send message
   # iframe var message box
 
 
-  @LUE-629
+@LUE-629
   Scenario: Creating quote function
     Given user should be able to click on "Quote text" icon
     When user clicks on "Quote text" icon

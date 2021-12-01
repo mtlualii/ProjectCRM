@@ -38,11 +38,6 @@ public class MessageStepsDefinitions {
 
     }
 
-    @Given("user clicks on {string} tab under Activity Stream")
-    public void user_clicks_on_tab_under_Activity_Stream(String activityTab) {
-        Driver.get().findElement(By.xpath("//*[.='" + activityTab + "']")).click();
-        BrowserUtils.waitFor(2);
-    }
 
     @Given("user should be able to click on {string} icon")
     public void user_should_be_able_to_click_on_icon(String msgBoxFunc) {
@@ -50,10 +45,6 @@ public class MessageStepsDefinitions {
         Assert.assertTrue(msgBoxFunc + " is clickable", Driver.get().findElement(By.xpath("//*[@title='" + msgBoxFunc + "']")).isDisplayed());
     }
 
-    @When("user clicks on {string} icon")
-    public void user_clicks_on_icon(String msgBoxFunc) {
-        Driver.get().findElement(By.xpath("//*[@title='" + msgBoxFunc + "']")).click();
-    }
 
     @Then("upload files and images table should be displayed")
     public void upload_files_and_images_table_should_be_displayed() {
