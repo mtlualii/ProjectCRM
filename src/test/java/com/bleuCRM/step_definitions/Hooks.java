@@ -10,12 +10,12 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
-   // @Before
+    @Before
     public void setUp(){
 
     }
 
-    //@After
+    @After
     public void tearDown(Scenario scenario){
         if(scenario.isFailed()){
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
