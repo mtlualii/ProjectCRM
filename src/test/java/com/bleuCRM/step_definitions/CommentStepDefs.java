@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 
 public class CommentStepDefs extends DashboardPage {
     String message = "This is a test comment";
-    //private Object Driver2;
+
 
     @When("Click on Comment button on any employees' post")
     public void click_on_Comment_button_on_any_employees_post() {
