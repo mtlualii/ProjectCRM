@@ -32,11 +32,12 @@ public class MessageStepsDefinitions {
     @Given("user logs in with valid credential")
     public void user_logs_in_with_valid_credential() {
         LoginPage loginPage = new LoginPage();
-        loginPage.usernameBox.sendKeys(ConfigurationReader.get("hr_username"));
+        loginPage.usernameBox.sendKeys(ConfigurationReader.get("username"));
         loginPage.passwordBox.sendKeys(ConfigurationReader.get("password"));
         loginPage.logInButton.click();
 
     }
+
 
 
     @Given("user should be able to click on {string} icon")
@@ -45,6 +46,10 @@ public class MessageStepsDefinitions {
         Assert.assertTrue(msgBoxFunc + " is clickable", Driver.get().findElement(By.xpath("//*[@title='" + msgBoxFunc + "']")).isDisplayed());
     }
 
+    @When("in message tab user clicks on {string} icon")
+    public void user_clicks_on_icon(String msgBoxFunc) {
+        Driver.get().findElement(By.xpath("//*[@title='" + msgBoxFunc + "']")).click();
+    }
 
     @Then("upload files and images table should be displayed")
     public void upload_files_and_images_table_should_be_displayed() {
@@ -56,7 +61,7 @@ public class MessageStepsDefinitions {
         MessagePage messagePage = new MessagePage();
         Actions actions = new Actions(Driver.get());
         actions.moveToElement(messagePage.uploadFilesAndImagesText).perform();
-        //????????????????????????
+
     }
 
     @Given("user should be able to click on {string} button on To line")
@@ -73,6 +78,7 @@ public class MessageStepsDefinitions {
 
     @Then("Add more pop up is displayed")
     public void add_more_pop_up_is_displayed() {
+        BrowserUtils.waitFor(2);
         Assert.assertTrue(new MessagePage().addMorePopupWindow.isDisplayed());
     }
 
@@ -81,8 +87,9 @@ public class MessageStepsDefinitions {
         new MessagePage().employeesAndDepartmentsTabButton.click();
     }
 
-    @Then("contacts should be listed")
+    @Then("in message contacts should be listed")
     public void contacts_should_be_listed() {
+        BrowserUtils.waitFor(2);
         Assert.assertFalse("Contacts isnt listed", new MessagePage().EmployeesAndDepartmentsContactsList.isEmpty());
     }
 
@@ -97,7 +104,7 @@ public class MessageStepsDefinitions {
         return new String[]{selectedName1, selectedName2};
     }
 
-    @Then("user should be able to select a contact from the list")
+    @Then("in message user should be able to select a contact from the list")
     public void user_should_be_able_to_select_a_contact_from_the_list() {
         MessagePage n = new MessagePage();
         int num = new Faker().number().numberBetween(1, n.EmployeesAndDepartmentsContactsList.size());
@@ -142,6 +149,7 @@ public class MessageStepsDefinitions {
     @When("user clicks on Send button")
     public void user_clicks_on_Send_button() {
         Driver.get().switchTo().defaultContent();
+        BrowserUtils.waitFor(2);
         new MessagePage().messageSendButton.click();
     }
 
