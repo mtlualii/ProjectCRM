@@ -49,7 +49,7 @@ Feature: Poll
     And user should be able to select a contact from the list
     And selected contact should be listed on Message area box
 
-  @wip
+
   Scenario: Add multiple questions and answers function
     And user clicks on "Poll" tab under Activity Stream
     When user enters clicks on Add question link
