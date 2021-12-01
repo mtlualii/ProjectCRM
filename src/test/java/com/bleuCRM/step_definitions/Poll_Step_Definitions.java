@@ -29,11 +29,6 @@ public class Poll_Step_Definitions {
         BrowserUtils.waitFor(2);
     }
 
-    @Then("Add more pop up is displayed")
-    public void add_more_pop_up_is_displayed() {
-        BrowserUtils.waitFor(1);
-        Assert.assertTrue(new PollPage().addMorePopupWindow.isDisplayed());
-    }
 
     @When("user clicks on Employees and Departments link on the table")
     public void user_clicks_on_box_on_the_table() {
@@ -83,14 +78,16 @@ public class Poll_Step_Definitions {
     }
 
     @When("user clicks on {string} icon")
-    public void user_clicks_on_icon(String iconName) {
+    public void in_message_tab_user_clicks_on_icon(String iconName) {
         new PollPage().myIcon(iconName).click();
+
     }
 
     @Given("user should be able to see {string} icon")
     public void userShouldBeAbleToSeeIcon(String iconName) {
         Assert.assertTrue(new PollPage().myIcon(iconName).isDisplayed());
     }
+
 
     @And("user should be able to select a contact from the list")
     public void userShouldBeAbleToSelectAContactFromTheList() {
