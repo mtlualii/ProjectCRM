@@ -1,4 +1,4 @@
-Feature: Login Function
+Feature: Login Function  
 
   Scenario: Login with valid credentials
     Given the user is on login page
