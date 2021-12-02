@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class PollPage extends DashboardPage{
+public class PollPage extends DashboardPage {
+
+    public static int countsOfAnswers;
 
     @FindBy(id = "bx-destination-tag")
     public WebElement addMoreButtonOnToLine;
@@ -15,7 +17,8 @@ public class PollPage extends DashboardPage{
     @FindBy(id = "popup-window-content-BXSocNetLogDestination")
     public WebElement addMorePopupWindow;
 
-    @FindBy(xpath = "//a[starts-with(@id,'destDepartmentTab_')]")// @FindBy(xpath = "//a[starts-with(@id,'destDepartmentTab_destination')]")
+    @FindBy(xpath = "//a[starts-with(@id,'destDepartmentTab_')]")
+// @FindBy(xpath = "//a[starts-with(@id,'destDepartmentTab_destination')]")
     public WebElement employeesAndDepartmentsTabOnPopUp;
 
     @FindBy(xpath = "//div[@class='bx-finder-company-department-employee-name']")
@@ -33,11 +36,42 @@ public class PollPage extends DashboardPage{
     @FindBy(xpath = "//body[starts-with(@style,'min-height')]")
     public WebElement pollMessageBox;
 
-    public WebElement myIcon(String iconName){
- return Driver.get().findElement(By.xpath("//*[@title='" + iconName + "']"));
+    @FindBy(linkText = "Add question")
+    public WebElement addQuestionLink;
+
+    @FindBy(xpath = "//li[@class='vote-question']")
+    public List<WebElement> questionOptionsBlocks;
+
+    @FindBy(xpath = "(//li[@class='vote-question'])[1]/ol/li//input[@id]")
+    public List<WebElement> firstQuestionBlockAnswerList;
+
+    @FindBy(xpath = "(//li[@class='vote-question'])[1]/div//input[@type='text']")
+    public WebElement firstQuestionInputBox;
+
+    @FindBy(css = "[title='Delete question']")
+    public WebElement deleteQuestionMark;
+
+    @FindBy(css = "[title='Delete answer']")
+    public WebElement deleteAnswerMark;
+
+    @FindBy(css = "input[id^='multi']")
+    public WebElement allowMultipleChoiceCheckBox;
+
+    @FindBy(id = "blog-submit-button-save")
+    public WebElement sendButton;
+
+    @FindBy(xpath = "//div[starts-with(@id,'blog_post_body_')]")
+    public List<WebElement> activityStreamList;
+
+    @FindBy(xpath = "(//div[starts-with(@id,'blg-post-img-')])[1]/div[4]")
+    public WebElement lastPostBodyVoteElement;
+
+    public WebElement myIcon(String iconName) {
+        return Driver.get().findElement(By.xpath("//*[@title='" + iconName + "']"));
     }
 
-    public void swapToMessageIframe(){
+    public void swapToMessageIframe() {
         Driver.get().switchTo().frame(0);
     }
+
 }

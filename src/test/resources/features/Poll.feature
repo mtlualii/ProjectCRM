@@ -52,10 +52,11 @@ Feature: Poll
 
   Scenario: Add multiple questions and answers function
     And user clicks on "Poll" tab under Activity Stream
-    When user enters clicks on Add question link
+    When user clicks on Add question link
     Then one more question area should be displayed
     When user clicks on latest answer
     Then a new answer box should be displayed
+
 
   Scenario: Deleting multiple questions and answers function
     And user clicks on "Poll" tab under Activity Stream
@@ -65,11 +66,13 @@ Feature: Poll
     When user clicks on Delete answer mark
     Then the question should be deleted
 
+
   Scenario: Giving multiple choice opportunity to user function
     And user clicks on "Poll" tab under Activity Stream
     Given Allow multiple choice box should be displayed
     When user selects Allow multiple choice
     Then Allow multiple choice box should be selected
+
 
   Scenario: Sending poll function
     And user clicks on "Poll" tab under Activity Stream
