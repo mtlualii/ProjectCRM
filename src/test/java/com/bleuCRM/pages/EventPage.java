@@ -82,7 +82,7 @@ public class EventPage extends BasePage {
 
     public WebElement pickLocation(String locationName) {
 
-       // Select select = new Select(eventLocationDropdown);
+       // Select select = new Select(eventLocationDropdown) ;
 
        // select.selectByVisibleText(locationName);
 
