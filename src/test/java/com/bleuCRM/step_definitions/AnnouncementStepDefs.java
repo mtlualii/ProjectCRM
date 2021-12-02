@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class AnnouncementStepDefs {
@@ -61,27 +62,31 @@ public class AnnouncementStepDefs {
         Assert.assertTrue(announcementPage.quatoTextBox.isEnabled());
     }
 
-    @And("User should be able to click any user")
-    public void userShouldBeAbleToClickAnyUser() {
-        
-    }
-
-    @Then("user should be able to see choosed user on Announcemet box")
-    public void userShouldBeAbleToSeeChoosedUserOnAnnouncemetBox() {
-        
-    }
 
     @When("user enters {string} to Announcement box")
-    public void userEntersToAnnouncementBox(String arg0) {
-        
+    public void userEntersToAnnouncementBox(String string) {
+        WebElement iframeElement = Driver.get().findElement(By.tagName("iframe"));
+
+        Driver.get().switchTo().frame(iframeElement);
+        announcementPage.announcementTextBox.sendKeys(string);
     }
 
     @And("User should click send")
     public void userShouldClickSend() {
-
+        BrowserUtils.waitFor(2);
+        Driver.get().switchTo().parentFrame();
+        BrowserUtils.waitFor(2);
+        announcementPage.sendButton.click();
     }
 
-    @Then("User should check announcement is sended")
-    public void userShouldCheckAnnouncementIsSended() {
+
+
+    @Then("User should check announcement is sended {string}")
+    public void userShouldCheckAnnouncementIsSended(String string) {
+        BrowserUtils.waitFor(2);
+        //  WebElement iframeElement = Driver.get().findElement(By.tagName("iframe"));
+
+       // Driver.get().switchTo().frame(iframeElement);
+        Assert.assertTrue(announcementPage.lastBox.getText().contains(string));
     }
 }

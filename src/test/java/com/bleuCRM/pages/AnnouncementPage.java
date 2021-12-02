@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AnnouncementPage extends BasePage{
     {PageFactory.initElements(Driver.get(), this);}
     @FindBy(css = ".bxhtmled-top-bar-btn.bxhtmled-button-link")
@@ -23,4 +25,11 @@ public class AnnouncementPage extends BasePage{
     public WebElement quatoButton;
     @FindBy(css = ".bxhtmled-quote")
     public WebElement quatoTextBox;
+    @FindBy(id = "bx-b-mention-blogPostForm")
+    public WebElement addMention;
+
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    public WebElement sendButton;
+    @FindBy(xpath = "(//div[@class='feed-post-text-block-inner-inner'])[1]")
+    public WebElement lastBox;
 }
