@@ -37,7 +37,7 @@ public class EventTabStepDefinitions {
 
     }
 
-    @When("Clicks event start date box")
+    /*@When("Clicks event start date box")
     public void clicks_event_start_date_box() {
 
         BrowserUtils.waitForVisibility(eventPage.eventFromDate,2);
@@ -89,12 +89,7 @@ public class EventTabStepDefinitions {
 
     }
 
-    @When("Clicks send")
-    public void clicks_send() {
 
-        eventPage.sendButton.click();
-
-    }
 
     @Then("Should be able to see entered {string} as event name, {string}, {string}, {string} as event date and time depends on time zone {string}")
     public void should_be_able_to_see_entered_as_event_name_hour_minutes_as_event_date_and_time(String input, String date, String hour, String minutes, String timeZone) {
@@ -119,6 +114,14 @@ public class EventTabStepDefinitions {
 
     }
 
+     */
+
+    @When("Clicks send")
+    public void clicks_send() {
+
+        eventPage.sendButton.click();
+
+    }
     @When("Clicks set reminder checkmark")
     public void clicks_set_reminder_checkmark() {
 
@@ -141,7 +144,8 @@ public class EventTabStepDefinitions {
 
         // Select select = new Select(eventPage.eventLocationDropdown);
 
-        eventPage.pickLocation(roomName);
+        eventPage.pickLocation(roomName).click();
+        BrowserUtils.waitFor(3);
 
     }
 
@@ -156,7 +160,7 @@ public class EventTabStepDefinitions {
     public void clicks_Member_Box() {
 
         eventPage.addingAttendees.click();
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitForVisibility(eventPage.employeesAndDepartments,2);
 
     }
 
@@ -164,14 +168,14 @@ public class EventTabStepDefinitions {
     public void clicks_Employees_and_Departments() {
 
         eventPage.employeesAndDepartments.click();
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(2);
     }
 
     @When("Clicks the arrow left side of department name {string} which would like to be added")
     public void clicks_the_arrow_left_side_of_which_would_like_to_be_added(String depName) {
 
         eventPage.pickDepartment(depName);
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(2);
 
     }
 
@@ -179,13 +183,14 @@ public class EventTabStepDefinitions {
     public void selects(String name) {
 
         eventPage.pickIndividual(name);
-        BrowserUtils.waitFor(3);
+
 
     }
 
     @Then("Should be able to see followings")
     public void should_be_able_to_see_and(List<String> attendees) {
 
+        BrowserUtils.waitForVisibility(eventPage.eventName,2);
         System.out.println(BrowserUtils.getElementsText(eventPage.informationBox));
         Assert.assertEquals(attendees, BrowserUtils.getElementsText(eventPage.informationBox));
 
@@ -196,23 +201,23 @@ public class EventTabStepDefinitions {
     public void clicks_more_button() {
 
         eventPage.moreButton.click();
+        BrowserUtils.waitFor(1);
 
     }
 
     @Then("Should be able to see followings as parameters")
     public void should_be_able_to_see_followings_as_parameters(List<String> parameters) {
 
-        Assert.assertEquals( parameters, BrowserUtils.getElementsText(eventPage.parameters));
-
-
-
+        Assert.assertEquals(parameters, BrowserUtils.getElementsText(eventPage.parameters));
 
     }
 
     @Then("Should be able to see an event with the name of {string}")
     public void should_be_able_to_see_an_event_with_the_name_of(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        BrowserUtils.waitFor(1);
+        Assert.assertEquals(string, eventPage.eventName.getText());
+
     }
 
 

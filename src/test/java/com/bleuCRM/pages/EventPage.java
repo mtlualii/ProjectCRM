@@ -82,6 +82,9 @@ public class EventPage extends BasePage {
 
     public WebElement pickLocation(String locationName) {
 
+       // Select select = new Select(eventLocationDropdown) ;
+
+       // select.selectByVisibleText(locationName);
 
         eventLocationDropdown.click();
         BrowserUtils.waitFor(2);
@@ -133,11 +136,13 @@ public class EventPage extends BasePage {
     @FindBy(xpath = "//label[text()='Importance']")
     public WebElement importance;
 
-    @FindBy(xpath = "//td[@class='feed-cal-addit-left-c']")
+    @FindBy(xpath = "//tr//td[@class='feed-cal-addit-left-c']//label")
     public List<WebElement> parameters;
 
     @FindBy(id = "blog-submit-button-save")
     public WebElement sendButton;
+
+
 
 
 
