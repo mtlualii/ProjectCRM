@@ -1,4 +1,3 @@
-
 Feature: Comment Function
 
   Background:
@@ -12,6 +11,7 @@ Feature: Comment Function
     And Enter text "This is a test comment" into comment box
     Then Click Send button and verify the comment
 
+  @wip
   Scenario: User should be able to like reviewers' comments
     Given Click on Reply button on other reviewer's comment
     And Enter Reply text "This is a second test comment" into comment box
@@ -19,4 +19,5 @@ Feature: Comment Function
 
   Scenario: User should be able to visit other profiles
     When the user click on any reviewers name on the posts and verify that
+
 
