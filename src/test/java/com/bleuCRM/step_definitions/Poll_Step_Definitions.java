@@ -171,8 +171,8 @@ public class Poll_Step_Definitions {
         Assert.assertTrue(new PollPage().allowMultipleChoiceCheckBox.isSelected());
     }
 
-    @When("user writes message to Message area box")
-    public void user_writes_message_to_Message_area_box() {
+    @When("user write message to Message area box")
+    public void user_write_message_to_Message_area_box() {
        PollPage p = new PollPage();
        p.swapToMessageIframe();
        p.pollMessageBox.sendKeys("It's Always Sunny in Philadelphia");
@@ -193,8 +193,8 @@ public class Poll_Step_Definitions {
         }
     }
 
-    @When("user clicks on the Send button")
-    public void user_clicks_on_Send_the_button() {
+    @When("user clicks on Send button")
+    public void user_clicks_on_Send_button() {
        new PollPage().sendButton.click();
     }
 
