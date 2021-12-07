@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
         glue = "com/bleuCRM/step_definitions",
         dryRun = false,
         tags = "@appreciation"
+
 )
 public class CukesRunner {
 }
