@@ -11,6 +11,8 @@ Feature: Comment Function
     And Enter text "This is a test comment" into comment box
     Then Click Send button and verify the comment
 
+
+
   @wip
   Scenario: User should be able to like reviewers' comments
     Given Click on Reply button on other reviewer's comment
