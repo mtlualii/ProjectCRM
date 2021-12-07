@@ -1,4 +1,3 @@
-@nesetbaba
 Feature: Poll
 
   Agile Story: As a user, I should be able to create a poll by clicking on Poll tab under Active Stream
@@ -76,7 +75,7 @@ Feature: Poll
 
   Scenario: Sending poll function
     And user clicks on "Poll" tab under Activity Stream
-    When user write message to Message area box
+    When user writes message to Message area box
     And user enters "question" to question box
     And User enters "answer" to answers box
     And user clicks on Send button
