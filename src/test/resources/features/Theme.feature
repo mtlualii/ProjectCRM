@@ -9,6 +9,7 @@ Feature: User should be able to change theme and notification settings.
     When the user enters valid credentials
     Then the user sees title "Portal"
 
+  @LUE-700
   Scenario: User should be able to select an image from the options.
     Given The User is on the Mainpage
     When The User clicks own username at the right top of page
@@ -17,6 +18,7 @@ Feature: User should be able to change theme and notification settings.
     And The User should click Save button
     Then Selected image should be visible in the background
 
+  @LUE-701
   Scenario: User should be able to create custom theme.
     Given The User is on the Mainpage
     When The User clicks own username at the right top of page
@@ -28,6 +30,7 @@ Feature: User should be able to change theme and notification settings.
     And The User should click save button
     Then Uploaded image should be visible in the background
 
+  @LUE-702
   Scenario: User should be able to use animated background
     Given The User is on the Mainpage
     When The User clicks own username at the right top of page
@@ -36,6 +39,7 @@ Feature: User should be able to change theme and notification settings.
     And The User should click Save Button
     Then Selected animated image should be visible in the background
 
+  @LUE-703
   Scenario: User should be able to display Simple Mode and Advance Mode under Configure Notifications
     Given The User is on the Mainpage
     When The User clicks own username at the right top of page
