@@ -39,7 +39,7 @@ Feature: User should be able to change theme and notification settings.
     And The User should click Save Button
     Then Selected animated image should be visible in the background
 
-  @LUE-703
+  @LUE-703 @smoke
   Scenario: User should be able to display Simple Mode and Advance Mode under Configure Notifications
     Given The User is on the Mainpage
     When The User clicks own username at the right top of page

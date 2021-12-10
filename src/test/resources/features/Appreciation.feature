@@ -22,8 +22,6 @@ Feature:Attaching a link
     Then the user should be able to add mention and send and display the the message
 
 
-
-
   Scenario: Adding quote
     And the user lands on the appreciation message page
     And the user clicks on the quote icon
