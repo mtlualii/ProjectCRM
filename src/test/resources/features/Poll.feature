@@ -41,7 +41,7 @@ Feature: Poll
     And user should be able to select a contact from the list
     And selected contact should be listed on Message area box
 
-@LUE-709
+@LUE-709 @smoke
   Scenario: Add multiple questions and answers function
     And user clicks on "Poll" tab under Activity Stream
     When user clicks on Add question link
@@ -65,7 +65,7 @@ Feature: Poll
     When user selects Allow multiple choice
     Then Allow multiple choice box should be selected
 
-@LUE-712
+@LUE-712 @smoke
   Scenario: Sending poll function
     And user clicks on "Poll" tab under Activity Stream
     When user writes message to Message area box
