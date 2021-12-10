@@ -10,7 +10,7 @@ Feature: Announcement
     Given user clicks on "Announcement" tab under More
 
 
-
+  @LUE-705 @smoke
   Scenario:User should be able to attach a link
     When user clicks on Link  button on To line
     Then Link popup is displayed
@@ -21,7 +21,7 @@ Feature: Announcement
   Scenario:User should be able to create a quote
     When user clicks on Quote button on To line
     Then Quote box  should be  displayed
-  @wip
+
 
   Scenario:User should be able to send an announcement.
     When user enters "That is first commit1" to Announcement box
