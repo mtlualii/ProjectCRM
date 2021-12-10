@@ -3,6 +3,7 @@ package com.bleuCRM.step_definitions;
 import com.bleuCRM.pages.PollPage;
 import com.bleuCRM.utilities.BrowserUtils;
 import com.bleuCRM.utilities.Driver;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -173,7 +174,7 @@ public class Poll_Step_Definitions {
     public void user_writes_message_to_Message_area_box() {
         PollPage p = new PollPage();
         p.swapToMessageIframe();
-        p.pollMessageBox.sendKeys("It's Always Sunny in Philadelphia");
+        p.pollMessageBox.sendKeys(new Faker().hitchhikersGuideToTheGalaxy().planet());
         Driver.get().switchTo().defaultContent();
     }
 
