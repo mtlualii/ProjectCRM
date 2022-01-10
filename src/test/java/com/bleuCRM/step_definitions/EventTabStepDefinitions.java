@@ -153,7 +153,7 @@ public class EventTabStepDefinitions {
     public void should_be_able_to_see_selected_meeting_room_as_Location(String roomName) {
 
         BrowserUtils.waitForVisibility(eventPage.location,3);
-        Assert.assertEquals(roomName, eventPage.location.getText() );
+        Assert.assertEquals(roomName, eventPage.location.getText());
     }
 
     @When("Clicks Member Box")
