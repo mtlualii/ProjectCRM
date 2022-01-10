@@ -6,7 +6,7 @@ Feature:Attaching a link
     When the user enters valid credentials
     Then the user sees title "Portal"
 
-    @ysn
+  @ysn
   Scenario: Adding link
     And the user lands on the appreciation message page
     And the user clicks on the link icon
@@ -20,8 +20,6 @@ Feature:Attaching a link
     And the user clicks the Employees and departments option
     When the user clicks the marketing2@cybertekschool.com
     Then the user should be able to add mention and send and display the the message
-
-
 
 
   Scenario: Adding quote

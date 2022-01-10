@@ -37,6 +37,7 @@ Feature:User should be able to see default filters as "WORKFLOWS,ANNOUNCEMENTS,M
     And the user click search button
     Then the user should be see only selected date
 
+  @smoke
   Scenario:User should be save filter
     When User click SAVE FILTER button
     Then User wright "TEAM ACTIVITY" and click SAVE button
