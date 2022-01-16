@@ -37,6 +37,7 @@ Feature: Event Menu
       | Calendar     |
       | Importance   |
 
+  @smoke
   Scenario: Sending Message
     When Clicks send
     Then Should be able to see an event with the name of "xyz"

@@ -68,7 +68,7 @@ Feature: User should be able to send message
 
 
 #"blog-submit-button-save"
-  @LUE-631
+  @LUE-631 @smoke
   Scenario: Sending message function
     Given user clicks on "Message" tab under Activity Stream
     When user write message to Message area box
